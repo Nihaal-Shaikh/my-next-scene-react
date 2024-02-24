@@ -1,11 +1,11 @@
-import './App.css'
-import HeroSection from './components/HeroSection'
+import './App.css';
+import Main from './components/Main';
 
 function App() {
 
   return (
     <>
-      <HeroSection />
+      <Main />
     </>
   )
 }

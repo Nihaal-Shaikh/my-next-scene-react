@@ -12,7 +12,6 @@ const LanguageDropdown = ({ onLanguageChange, selectedLanguage }) => {
         <div>
             <label>Select a Language:</label>
             <select value={selectedLanguage} onChange={onLanguageChange}>
-                <option value="">-- Select Language --</option>
                 {languages.map((language, index) => (
                     <option key={index} value={language}>
                         {language}

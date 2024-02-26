@@ -7,20 +7,16 @@ export default function Main() {
 
   const [activeTab, setActiveTab] = useState('basic');
   const [movieData, setMovieData] = useState();
+  const [posterData, setPosterData] = useState();
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
 
   const handleSearch = (params) => {
-    // Perform your API call here using the params
-    // ...
-
-    // For the purpose of this example, setMovieData to some data
     setMovieData(params);
+    setPosterData(params.movies.map(movie => movie.Poster))
   };
-
-  console.log(movieData);
 
   return (
     <>
@@ -45,7 +41,7 @@ export default function Main() {
         {activeTab === 'advanced' && <AdvancedTab />}
       </div>
     </div>
-    <Swiper />
+    <Swiper posterLink={posterData} />
     </>
   );
 }

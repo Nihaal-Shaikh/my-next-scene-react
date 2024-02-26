@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 // import required modules
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 
-export default function App() {
+export default function App({ posterLink }) {
   return (
     <>
       <Swiper
@@ -29,30 +29,11 @@ export default function App() {
         modules={[EffectCoverflow, Pagination]}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <img src="https://m.media-amazon.com/images/M/MV5BMTM5ODEwOTM0OV5BMl5BanBnXkFtZTcwOTQ3NzI3Nw@@._V1_SX300.jpg" />
+      {posterLink?.map((poster, index) => (
+        <SwiperSlide key={index}>
+          <img src={poster} alt={`Poster ${index + 1}`} />
         </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://m.media-amazon.com/images/M/MV5BMTM5ODEwOTM0OV5BMl5BanBnXkFtZTcwOTQ3NzI3Nw@@._V1_SX300.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://m.media-amazon.com/images/M/MV5BMTM5ODEwOTM0OV5BMl5BanBnXkFtZTcwOTQ3NzI3Nw@@._V1_SX300.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://m.media-amazon.com/images/M/MV5BMTM5ODEwOTM0OV5BMl5BanBnXkFtZTcwOTQ3NzI3Nw@@._V1_SX300.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://m.media-amazon.com/images/M/MV5BMTM5ODEwOTM0OV5BMl5BanBnXkFtZTcwOTQ3NzI3Nw@@._V1_SX300.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://m.media-amazon.com/images/M/MV5BMTM5ODEwOTM0OV5BMl5BanBnXkFtZTcwOTQ3NzI3Nw@@._V1_SX300.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://m.media-amazon.com/images/M/MV5BMTM5ODEwOTM0OV5BMl5BanBnXkFtZTcwOTQ3NzI3Nw@@._V1_SX300.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://m.media-amazon.com/images/M/MV5BMTM5ODEwOTM0OV5BMl5BanBnXkFtZTcwOTQ3NzI3Nw@@._V1_SX300.jpg" />
-        </SwiperSlide>
+      ))}
       </Swiper>
     </>
   );

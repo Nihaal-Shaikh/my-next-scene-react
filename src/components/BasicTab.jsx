@@ -42,16 +42,30 @@ const BasicTab = ({ onSearch }) => {
       };
     
       const [selectedType, setSelectedType] = useState('Series');
+      const [selectedGenres, setSelectedGenres] = useState([]);
   
       const handleTypeChange = (value) => {
-        console.log(value);
         setSelectedType(value);
       };
+
+      const handleGenreChange = (genre) => {
+        const updatedGenres = [...selectedGenres];
+        const genreIndex = updatedGenres.indexOf(genre);
+    
+        if (genreIndex !== -1) {
+          // Genre is already selected, remove it
+          updatedGenres.splice(genreIndex, 1);
+        } else {
+          // Genre is not selected, add it
+          updatedGenres.push(genre);
+        }
+        setSelectedGenres(updatedGenres);
+      };    
       
     return (
         <>
             <BasicRadioButtons onTypeChange={handleTypeChange} type={selectedType} />
-            <BasicCheckboxes />
+            <BasicCheckboxes onGenreChange={handleGenreChange} genres={selectedGenres} />
             <BasicTimePeriod />
             <ImdbRating />
             <LanguageDropdown />

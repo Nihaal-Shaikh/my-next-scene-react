@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-export default function GenreCheckboxes() {
-  const genres = [
+export default function GenreCheckboxes({ onGenreChange, genres }) {
+  const movieGenres = [
     "Action", "Adventure", "Animation", "Biography", "Comedy", "Crime",
     "Documentary", "Drama", "Family", "Fantasy", "Film-Noir", "Game-Show",
     "History", "Horror", "Music", "Musical", "Mystery", "News", "Reality-TV",
@@ -12,30 +12,15 @@ export default function GenreCheckboxes() {
   const initialVisibleRows = 2;
 
   const [visibleRows, setVisibleRows] = useState(initialVisibleRows);
-  const [selectedGenres, setSelectedGenres] = useState([]);
 
   const genresInRows = [];
-  for (let i = 0; i < genres.length; i += genresPerRow) {
-    const rowGenres = genres.slice(i, i + genresPerRow);
+  for (let i = 0; i < movieGenres.length; i += genresPerRow) {
+    const rowGenres = movieGenres.slice(i, i + genresPerRow);
     genresInRows.push(rowGenres);
   }
 
   const handleMoreClick = () => {
     setVisibleRows(visibleRows + 1);
-  };
-
-  const handleCheckboxChange = (genre) => {
-    const updatedGenres = [...selectedGenres];
-    const genreIndex = updatedGenres.indexOf(genre);
-
-    if (genreIndex !== -1) {
-      // Genre is already selected, remove it
-      updatedGenres.splice(genreIndex, 1);
-    } else {
-      // Genre is not selected, add it
-      updatedGenres.push(genre);
-    }
-    setSelectedGenres(updatedGenres);
   };
 
   return (
@@ -48,8 +33,8 @@ export default function GenreCheckboxes() {
               <input
                 type="checkbox"
                 className="form-checkbox h-5 w-5 text-blue-500"
-                checked={selectedGenres.includes(genre)}
-                onChange={() => handleCheckboxChange(genre)}
+                checked={genres.includes(genre)}
+                onChange={() => onGenreChange(genre)}
               />
               <span className="ml-2 text-gray-700">{genre}</span>
             </label>

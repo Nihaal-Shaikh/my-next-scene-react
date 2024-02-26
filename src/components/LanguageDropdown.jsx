@@ -4,9 +4,8 @@ const LanguageDropdown = () => {
     const languages = [
         "English", "Chinese", "Spanish", "Hindi", "Arabic", "Bengali", "Portuguese", "Russian", "Urdu", "Indonesian",
         "German", "French", "Italian", "Turkish", "Vietnamese", "Telugu", "Marathi", "Tamil", "Urdu", "Polish", "Dutch",
-        "Kannada", "Malayalam", "Filipino", "Thai", "Swahili", "Korean", "Malay", "Japanese", "Romanian", "Sinhalese",
-        "Farsi", "Sindhi", "Amoy (Min Nan Chinese)", "Bulgarian", "Azerbaijani", "Haitian Creole", "Czech", "Macedonian",
-        "Lao", "Latvian", "Lithuanian", "Nepali", "Norwegian", "Slovenian", "Others"
+        "Kannada", "Malayalam", "Filipino", "Thai", "Korean", "Malay", "Japanese", "Romanian", "Farsi", "Czech", 
+        "Nepali", "Norwegian", "Slovenian", "Others"
     ];
     const [selectedLanguage, setSelectedLanguage] = useState('');
 

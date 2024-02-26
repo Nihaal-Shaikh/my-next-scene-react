@@ -1,12 +1,4 @@
-import { useState } from "react";
-
-export default function BasicRadioButtons() {
-    
-    const [selectedOption, setSelectedOption] = useState('Series');
-
-    const handleOptionChange = (value) => {
-        setSelectedOption(value);
-    };
+export default function BasicRadioButtons({ onTypeChange, type }) {
 
     return (
         <div className="flex items-center space-x-4">
@@ -14,8 +6,8 @@ export default function BasicRadioButtons() {
                 <input
                     type="radio"
                     value="Series"
-                    checked={selectedOption === 'Series'}
-                    onChange={() => handleOptionChange('Series')}
+                    checked={type === 'Series'}
+                    onChange={() => onTypeChange('Series')}
                     className="form-radio h-5 w-5 text-blue-500"
                 />
                 <span className="ml-2 text-gray-700">Series</span>
@@ -24,8 +16,8 @@ export default function BasicRadioButtons() {
                 <input
                     type="radio"
                     value="movie"
-                    checked={selectedOption === 'Movies'}
-                    onChange={() => handleOptionChange('Movies')}
+                    checked={type === 'Movies'}
+                    onChange={() => onTypeChange('movie')}
                     className="form-radio h-5 w-5 text-blue-500"
                 />
                 <span className="ml-2 text-gray-700">Movies</span>

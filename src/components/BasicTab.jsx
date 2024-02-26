@@ -48,6 +48,12 @@ const BasicTab = ({ onSearch }) => {
       const [toYear, setToYear] = useState(new Date().getFullYear());
 
       const [rating, setRating] = useState('Any');
+
+      const [selectedLanguage, setSelectedLanguage] = useState('');
+  
+      const handleLanguageChange = (event) => {
+          setSelectedLanguage(event.target.value);
+      };
   
       const handleRatingChange = (event) => {
           setRating(event.target.value);
@@ -86,7 +92,7 @@ const BasicTab = ({ onSearch }) => {
             <BasicCheckboxes onGenreChange={handleGenreChange} genres={selectedGenres} />
             <BasicTimePeriod onFromChange={handleFromYearChange} onToChange={handleToYearChange} from={fromYear} to={toYear} />
             <ImdbRating onRatingChange={handleRatingChange} rating={rating} />
-            <LanguageDropdown />
+            <LanguageDropdown onLanguageChange={handleLanguageChange} language={selectedLanguage} />
             <button onClick={handleSearchClick}>Search</button>
         </>
     );

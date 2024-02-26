@@ -9,15 +9,22 @@ const BasicTab = ({ onSearch }) => {
 
     const handleSearchClick = () => {
         // Example URL parameters
+
+        if(toYear < fromYear || selectedGenres.length < 1) {
+            alert("Are you dumb?");
+            return;
+        }
         const params = {
-            type: 'movie',
-            genres: 'Action',
-            from: '2019',
-            to: '2023',
+            type: selectedType,
+            genres: selectedGenres,
+            from: fromYear,
+            to: toYear,
+            rating: rating,
+            language: selectedLanguage,
         };
 
         // Perform your API call here
-        fetch(`http://127.0.0.1:8000/api/example?type=${params.type}&genres=${params.genres}&from=${params.from}&to=${params.to}`, {
+        fetch(`http://127.0.0.1:8000/api/example?type=${params.type}&genres=${params.genres}&from=${params.from}&to=${params.to}&rating=${params.rating}&language=${params.language}`, {
             method: 'GET', // 'GET' method for retrieving data
             headers: {
                 'Content-Type': 'application/json',
@@ -26,7 +33,8 @@ const BasicTab = ({ onSearch }) => {
         })
             .then(response => response.json())
             .then(data => {
-                // console.log(data);
+                console.log(data);
+                return;
                 onSearch(data);
                 return;
                 // Handle the response data
@@ -49,7 +57,7 @@ const BasicTab = ({ onSearch }) => {
 
     const [rating, setRating] = useState('Any');
 
-    const [selectedLanguage, setSelectedLanguage] = useState('');
+    const [selectedLanguage, setSelectedLanguage] = useState('English');
 
     const handleLanguageChange = (event) => {
         setSelectedLanguage(event.target.value);

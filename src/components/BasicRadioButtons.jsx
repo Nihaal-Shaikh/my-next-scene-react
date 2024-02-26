@@ -23,7 +23,7 @@ export default function BasicRadioButtons() {
             <label className="inline-flex items-center">
                 <input
                     type="radio"
-                    value="Movies"
+                    value="movie"
                     checked={selectedOption === 'Movies'}
                     onChange={() => handleOptionChange('Movies')}
                     className="form-radio h-5 w-5 text-blue-500"
